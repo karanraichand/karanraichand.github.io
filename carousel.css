@@ -1,0 +1,61 @@
+/* Shared infinite carousel treatment for portfolio case studies. */
+.project-carousel {
+  position: relative;
+  margin-inline: -56px;
+  padding-inline: 56px;
+}
+
+.project-viewport {
+  container-type: inline-size;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-x pan-y;
+  scrollbar-width: none;
+  padding: 8px 2px 28px;
+  outline: 0;
+}
+
+.project-viewport::-webkit-scrollbar { display: none; }
+.certification-viewport {
+  scroll-behavior: auto;
+  scroll-padding-inline: 2px;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-x pan-y;
+}
+.project-carousel .project-grid {
+  display: flex;
+  grid-template-columns: none;
+  gap: 22px;
+  width: max-content;
+}
+
+.project-carousel .project-card {
+  flex: 0 0 calc((100cqw - 44px) / 3);
+  scroll-snap-align: start;
+}
+
+.project-carousel .project-card:last-child {
+  grid-column: auto;
+  max-width: none;
+}
+
+.project-prev { left: 7px; }
+.project-next { right: 7px; }
+@media (max-width: 900px) {
+  .project-carousel .project-card { flex-basis: calc((100cqw - 22px) / 2); }
+}
+
+@media (max-width: 610px) {
+  .project-carousel {
+    margin-inline: -22px;
+    padding-inline: 42px;
+  }
+  .project-carousel .project-card { flex-basis: calc(100vw - 84px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-viewport { scroll-behavior: auto; }
+}
